@@ -11,15 +11,22 @@
         <div
           class="info-content flex flex-column align-items-start justify-content-center"
         >
-          <img :src="banner.logo" alt="Movie Logo" />
+          <img  class="fadeClass" :src="banner.logo" alt="Movie Logo" />
           <div
-            class="rating flex flex-row align-items-center justify-content-start"
+            class="
+              fadeClass
+              rating
+              flex flex-row
+              align-items-center
+              justify-content-start
+            "
           >
             <i class="m-1 w-auto pi pi-star-fill"></i>
             <i class="m-1 w-auto pi pi-star-fill"></i>
             <i class="m-1 w-auto pi pi-star-fill"></i>
             <i class="m-1 w-auto pi pi-star-fill"></i>
             <i class="m-1 w-auto pi pi-star-fill"></i>
+            <p class="fadeClass" v-if="banner.description"></p>
             <span>2016 2 temporadas</span>
           </div>
           <p v-if="banner.description">{{ banner.description }}</p>
@@ -43,7 +50,7 @@
           :key="index"
           :id="'section' + index"
         >
-          <a :href="'#section' + (index - 1 <= 0 ? noSection : index - 1)"><</a>
+          <a :href="'#section' + (index - 1 <= 0 ? noSection : index - 1)"></a>
           <div v-for="subIndex in noItems" :key="subIndex" class="item"
            @click="()=>{
              banner.image = $store.state.BASE_URL + movies[2].movies[( ((index - 1) * noItems ) + (subIndex - 1))].banner
@@ -278,6 +285,18 @@ main {
         }
       }
     }
+  }
+}
+
+.fadeClass{
+  animation: fade 5s;
+}
+@keyframes fadeIn{
+  0%{
+    opacity:0;
+  }
+  100%{
+    opacity: 1;
   }
 }
 </style>
